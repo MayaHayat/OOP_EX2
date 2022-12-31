@@ -12,7 +12,7 @@ The third and last function "getNumOfLinesThreadPool" once again receives the ar
 In the "getNumOfLinesThreadPool" function a thread pool is created with a fixed size (the length of our fileNames array), for each file whose name is found in the array a new MyThreadCollable is created and added to the thread pool.
 After having calculated the number of lines in a specific file that number is being added to the 'totalLines' counter and when all thread are done the threads are shut down and the totalLines is returned as the answer.
 
-
+### Comparing running times
 We've been asked to compare all three methods, note we created a large number of files so we can see a clear difference. The calculation can be found in the "Main" class.
 We created 50 files with seed number 2 and bound = 100. This created 50 files and the total number of lines in all files are 2418. 
 
