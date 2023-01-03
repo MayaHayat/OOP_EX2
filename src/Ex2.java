@@ -8,20 +8,23 @@ public class Ex2 {
         String [] files = Ex2_1.createTextFiles(50,2,100);
         System.out.println(Arrays.toString(files));
 
-        Instant start = Instant.now();
+        Long start = System.currentTimeMillis();
         System.out.println("TotalLines: " + Ex2_1.getNumOfLines(files));
-        Instant end = Instant.now();
-        System.out.println(Duration.between(start, end));
+        Long done = System.currentTimeMillis();
+        System.out.println((done-start)*0.001);
 
-        start = Instant.now();
+
+        start = System.currentTimeMillis();
         System.out.println("TotalLines: " + Ex2_1.getNumOfLinesThreads(files));
-        end = Instant.now();
-        System.out.println(Duration.between(start, end));
+        done = System.currentTimeMillis();
+        System.out.println((done-start)*0.001);
 
-        start = Instant.now();
+
+        start = System.currentTimeMillis();
         System.out.println("TotalLines: " + Ex2_1.getNumOfLinesThreadPool(files));
-        end = Instant.now();
-        System.out.println(Duration.between(start, end));
+        done= System.currentTimeMillis();
+        System.out.println((done-start)*0.001);
+
 
     }
 }
