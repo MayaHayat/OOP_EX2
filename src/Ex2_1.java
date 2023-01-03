@@ -53,7 +53,7 @@ public class Ex2_1 {
                while ((line = reader.readLine()) != null) {
                    totalLines++;
                }
-               System.out.println(totalLines);
+               //System.out.println(totalLines);
 
                reader.close();
            }
@@ -69,21 +69,31 @@ public class Ex2_1 {
      * @param fileNames is the names of the files to count lines of.
      * @return the total number of lines of all files.
      */
+
+
     public static int getNumOfLinesThreads(String[] fileNames){
         int totalLines = 0;
+
+        MyThread[] threads = new MyThread[fileNames.length];
+
+        // create and start each thread
         for (int i = 0 ; i < fileNames.length ; i++){
-            MyThread counter = new MyThread(fileNames[i]);
+            threads[i] = new MyThread(fileNames[i]);
+            threads[i].start();
+        }
+
+        // wait for all threads to complete
+        for (int i = 0 ; i < fileNames.length ; i++){
             try{
-                counter.start();
-                counter.join();
-            }
-            catch (InterruptedException e){
+                threads[i].join();
+            } catch (InterruptedException e){
                 e.printStackTrace();
             }
 
-            int num = counter.getNumLines();
+            int num = threads[i].getNumLines();
             totalLines += num;
         }
+
         return totalLines;
     }
 
