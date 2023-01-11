@@ -1,0 +1,70 @@
+@startuml
+
+enum TaskType {
+- typePriority: int
++ TaskType(priority: int)
++ setPriority(priority: int)
++ getPriorityValue(): int
++ getType(): TaskType
++ validatePriority(priority: int): boolean
++ toString(): String
+}
+
+class Task {
+- tType: TaskType
+- operation: Callable
+- priority: int
++ Task(operation: Callable, tType: TaskType)
++ Task(operation: Callable)
++ getTaskType(): TaskType
++ createTask(operation: Callable): Task
++ create(operation: Callable, taskType: TaskType): Task
++ getPriority(): int
++ createTask(operation: Callable, tType: TaskType): Task
++ call(): T
++ compareTo(o: Task): int
+}
+
+class CustomExecutor {
+- queue: PriorityBlockingQueue
+- executor: ExecutorService
+- maxPriority: int
++ CustomExecutor()
++ updatePriorities(newPriority : int) : void
++ submit(task: Task): Future
++ submit(task: Callable, type: TaskType): Future
++ submit(call: Callable): Future
++ getCurrentMax(): int
++ beforeExecute(thread: Thread , runnable : Runnable) : void
++ newTaskFor((call: Callable) : RunnableFuture
++ gracefullyTerminate(): void
+
+}
+
+class CustomFuture{
+- task: Task
++ CustomFuture(task: Task)
++ CustomFuture(call: Callable)
++ getPriority() : int
++ CompareTo(o : CustomFuture)
+}
+
+
+
+TaskType <|-- COMPUTATIONAL
+TaskType <|-- IO
+TaskType <|-- OTHER
+class Task implements Callable
+class Task implements Comparable
+class CustomExecutor extends ThreadPoolExecutor
+CustomExecutor --o CustomFuture
+class CustomFuture implements Comparable
+class CustomFuture extends FutureTask
+
+
+TaskType <|-- Task
+
+Task <-- CustomExecutor
+
+
+@enduml
