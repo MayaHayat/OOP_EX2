@@ -21,13 +21,16 @@ public class MyThread extends Thread {
         int count = 0;
         try{
             BufferedReader reader = new BufferedReader(new FileReader(this.fileName));
+            //System.out.println("Thread started " + this.fileName);
+
             while (reader.readLine()!= null){
                 count++;
                 //System.out.println(count + "    "+this.fileName);
             }
             this.numLines = count;
-           // System.out.println("Thread started " + this.numLines);
             reader.close();
+            //System.out.println("Thread finished " + this.fileName);
+
         }
         catch (IOException e){
             e.printStackTrace();

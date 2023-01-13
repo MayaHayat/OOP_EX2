@@ -73,7 +73,7 @@ public class Ex2_1 {
      */
 
 
-    public static int getNumOfLinesThreads(String[] fileNames){
+    public int getNumOfLinesThreads(String[] fileNames){
         int totalLines = 0;
 
         MyThread[] threads = new MyThread[fileNames.length];
@@ -101,13 +101,14 @@ public class Ex2_1 {
 
 
 
-    public static int getNumOfLinesThreadPool(String[] fileNames){
+    public int getNumOfLinesThreadPool(String[] fileNames){
         int totalLines = 0;
 
         ExecutorService threads = Executors.newFixedThreadPool(fileNames.length);
         ArrayList<Future<Integer>> tasks = new ArrayList<>();
         for (int i = 0 ; i < fileNames.length ; i++){
             MyThreadCallable task = new MyThreadCallable(fileNames[i]);
+
             tasks.add(threads.submit(task));
         }
         for (Future<Integer> taskcurr : tasks) {

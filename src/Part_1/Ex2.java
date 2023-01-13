@@ -1,5 +1,8 @@
 package Part_1;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 
 public class Ex2 {
@@ -7,22 +10,23 @@ public class Ex2 {
         String [] files = Ex2_1.createTextFiles(50,2,100);
         System.out.println(Arrays.toString(files));
 
-        Long start = System.currentTimeMillis();
+        Instant start = Instant.now();
         System.out.println("TotalLines: " + Ex2_1.getNumOfLines(files));
-        Long done = System.currentTimeMillis();
-        System.out.println((done-start)*0.001);
+        Instant done = Instant.now();
+        System.out.println(Duration.between(start, done));
+
+        start = Instant.now();
+        Ex2_1 function3 = new Ex2_1();
+        System.out.println("TotalLines: " + function3.getNumOfLinesThreads(files));
+        done = Instant.now();
+        System.out.println(Duration.between(start, done));
 
 
-        start = System.currentTimeMillis();
-        System.out.println("TotalLines: " + Ex2_1.getNumOfLinesThreads(files));
-        done = System.currentTimeMillis();
-        System.out.println((done-start)*0.001);
-
-
-        start = System.currentTimeMillis();
-        System.out.println("TotalLines: " + Ex2_1.getNumOfLinesThreadPool(files));
-        done= System.currentTimeMillis();
-        System.out.println((done-start)*0.001);
+        start = Instant.now();
+        Ex2_1 function4 = new Ex2_1();
+        System.out.println("TotalLines: " + function4.getNumOfLinesThreadPool(files));
+        done = Instant.now();
+        System.out.println(Duration.between(start, done));
 
 
     }

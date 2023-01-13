@@ -62,7 +62,7 @@ public class Tests {
     public void otherTests() {
         CustomExecutor customExecutor = new CustomExecutor();
         customExecutor.setCorePoolSize(1);
-        customExecutor.setMaximumPoolSize(1);
+        customExecutor.setMaximumPoolSize(5);
 
         for (int i = 0; i < 5; i++) {
             Callable<String> testIO = () -> {

@@ -18,11 +18,12 @@ public class MyThreadCallable  implements Callable<Integer> {
         int count = 0;
         try{
             BufferedReader reader = new BufferedReader(new FileReader(this.fileName));
+           // System.out.println("Thread started " + this.fileName);
             while (reader.readLine()!= null){
                 count++;
             }
             this.numLines = count;
-            // System.out.println("Thread started " + this.numLines);
+           // System.out.println("Thread finished " + this.fileName);
             reader.close();
         }
         catch (IOException e){
