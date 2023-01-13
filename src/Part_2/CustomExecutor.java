@@ -8,8 +8,8 @@ public class CustomExecutor extends ThreadPoolExecutor {
     private PriorityBlockingQueue <Runnable> queue;
 
     private static final int availableProcessors = Runtime.getRuntime().availableProcessors();
-    int maxNumThreads = availableProcessors -1;
-    int minNumThreads = availableProcessors /2;
+    private int maxNumThreads = availableProcessors -1;
+    private int minNumThreads = availableProcessors /2;
     private long keepAlive = 300;
     private  int maxPriority;
 
@@ -86,7 +86,8 @@ public class CustomExecutor extends ThreadPoolExecutor {
                 return i + 1;
             }
         }
-        return 0;
+        System.out.println("No priorities");
+        return -1;
     }
 
     /**
@@ -110,8 +111,7 @@ public class CustomExecutor extends ThreadPoolExecutor {
     public void gracefullyTerminate() {
         super.shutdown();
     }
-
-
+    
 
 
 }
