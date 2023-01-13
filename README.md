@@ -22,6 +22,23 @@ This change might not look too significant, however we've only 2418 lines, some 
 
 This order makes sense to us as threads are used to help multiple tasks take place at the same time, we also know that thread pool maintains all threads found in it and therefore increases performance.
 
+### Another Example
+Given (n = 1000, seed = 2, bound = 1000):
+
+#### Without Threads
+TotalLines: 487592 
+
+PT10.9429687S 
+#### With Threads
+
+TotalLines: 487592
+
+PT0.1435725S
+#### With ThreadPool
+TotalLines: 487592
+
+PT0.1112601S  
+
 ### UML Diagram
 
 ![diagram](UMLdiagram.png)
